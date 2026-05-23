@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consumer Marketing Framework</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --surface2: #f4f2ee;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --text-primary: #1a1916;
+    --text-secondary: #5a5750;
+    --text-tertiary: #9a9690;
+    --accent: #1a1916;
+    --purple: #6b63cc;
+    --teal: #1a8f68;
+    --blue: #1459a0;
+    --coral: #c94f27;
+    --pink: #bf4a72;
+    --amber: #a86910;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  header {
+    padding: 52px 40px 36px;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--surface);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .header-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    max-width: 560px;
+  }
+
+  .header-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  .main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 0;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 10px;
+  }
+
+  /* ── Strategy block ── */
+  .strategy-block {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    margin-bottom: 8px;
+  }
+
+  .strategy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 16px;
+  }
+
+  .s-col-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+
+  .s-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 12px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+
+  .s-item::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--text-tertiary);
+  }
+
+  .informed-row {
+    border-top: 0.5px solid var(--border);
+    padding-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .informed-label {
+    font-size: 10px;
+    color: var(--text-tertiary);
+    margin-right: 2px;
+  }
+
+  .pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--surface2);
+    border: 0.5px solid var(--border);
+    color: var(--text-secondary);
+  }
+
+  /* ── Divider ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px 0;
+    color: var(--text-tertiary);
+    font-size: 11px;
+  }
+
+  .divider-line {
+    flex: 1;
+    height: 0.5px;
+    background: var(--border);
+  }
+
+  /* ── Subfunctions ── */
+  .subfunctions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .sf-card {
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: border-color .15s, box-shadow .15s;
+  }
+
+  .sf-card:hover {
+    border-color: var(--border-strong);
+  }
+
+  .sf-card.open {
+    border-color: var(--border-strong);
+  }
+
+  .sf-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    cursor: pointer;
+    gap: 12px;
+    user-select: none;
+  }
+
+  .sf-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .sf-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .sf-text {}
+
+  .sf-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 1px;
+  }
+
+  .sf-tagline {
+    font-size: 11px;
+    color: var(--text-secondary);
+  }
+
+  .sf-chevron {
+    font-size: 16px;
+    color: var(--text-tertiary);
+    transition: transform .2s;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+
+  .sf-card.open .sf-chevron {
+    transform: rotate(180deg);
+  }
+
+  .sf-body {
+    display: none;
+    padding: 0 16px 14px 36px;
+    border-top: 0.5px solid var(--border);
+  }
+
+  .sf-card.open .sf-body {
+    display: block;
+  }
+
+  .sf-items {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .sf-item {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-left: 12px;
+    position: relative;
+  }
+
+  .sf-item::before {
+    content: "·";
+    position: absolute;
+    left: 3px;
+    color: var(--text-tertiary);
+  }
+
+  /* ── Enablers ── */
+  .enablers {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .e-card {
+    background: var(--surface);
+    border: 0.5px dashed var(--border-strong);
+    border-radius: var(--radius-md);
+    padding: 12px 14px;
+  }
+
+  .e-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+  }
+
+  .e-sub {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    line-height: 1.5;
+  }
+
+  /* ── Journey bar ── */
+  .journey-wrap {
+    margin-top: 12px;
+    background: var(--surface);
+    border: 0.5px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 10px 16px;
+  }
+
+  .journey {
+    display: flex;
+    align-items: center;
+  }
+
+  .j-step {
+    flex: 1;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: .04em;
+    color: var(--text-tertiary);
+    padding: 2px;
+    position: relative;
+  }
+
+  .j-step + .j-step::before {
+    content: "›";
+    position: absolute;
+    left: -5px;
+    color: var(--border-strong);
+    font-size: 13px;
+  }
+
+  /* ── Footer ── */
+  footer {
+    max-width: 900px;
+    margin: 40px auto 0;
+    padding: 0 40px;
+    font-size: 11px;
+    color: var(--text-tertiary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 0.5px solid var(--border);
+    padding-top: 20px;
+  }
+
+  @media (max-width: 640px) {
+    header, .main, footer { padding-left: 20px; padding-right: 20px; }
+    h1 { font-size: 28px; }
+    .strategy-grid { grid-template-columns: 1fr; gap: 16px; }
+    .enablers { grid-template-columns: repeat(2, 1fr); }
+    .sf-body { padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Reference framework</div>
+  <h1>Consumer Marketing</h1>
+  <p class="header-desc">A complete taxonomy of consumer marketing — from guiding principles through the six operational subfunctions and the enablers that underpin them all.</p>
+</header>
+
+<div class="main">
+
+  <div class="section-label" style="margin-top:0">Strategy & guiding principles</div>
+  <div class="strategy-block">
+    <div class="strategy-grid">
+      <div>
+        <div class="s-col-label">Strategy</div>
+        <div class="s-item">Clear marketing objectives tied to business outcomes</div>
+        <div class="s-item">KPIs and measurement framework agreed upfront</div>
+        <div class="s-item">Budget allocation across subfunctions</div>
+        <div class="s-item">Audience segmentation — who we are targeting and why</div>
+        <div class="s-item">Channel and investment prioritization</div>
+        <div class="s-item">Annual planning cadence and resourcing</div>
+      </div>
+      <div>
+        <div class="s-col-label">Guiding principles</div>
+        <div class="s-item">Consumer-first — every decision starts with the consumer, not the product</div>
+        <div class="s-item">Data-driven — intuition is a starting point, evidence is the arbiter</div>
+        <div class="s-item">Brand consistency — one voice and identity across every channel</div>
+        <div class="s-item">Test & learn — nothing is final, everything can be improved</div>
+        <div class="s-item">Privacy & trust — responsible use of consumer data, always</div>
+        <div class="s-item">Full-funnel thinking — awareness and conversion are both necessary</div>
+      </div>
+    </div>
+    <div class="informed-row">
+      <span class="informed-label">Set by CMO, informed by:</span>
+      <span class="pill">Customer insight</span>
+      <span class="pill">Market research</span>
+      <span class="pill">Competitive intelligence</span>
+      <span class="pill">Business strategy</span>
+      <span class="pill">Finance & revenue goals</span>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span>informs all six subfunctions</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="section-label">Six subfunctions</div>
+  <div class="subfunctions" id="sfs"></div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <span>supported by cross-cutting enablers</span>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="section-label">Enablers</div>
+  <div class="enablers">
+    <div class="e-card">
+      <div class="e-title">Customer insight</div>
+      <div class="e-sub">Qual & quant research, user studies, surveys, primary & secondary data — feeds all subfunctions</div>
+    </div>
+    <div class="e-card">
+      <div class="e-title">Creative & content</div>
+      <div class="e-sub">Copy, design, video, UX writing — the craft layer across every channel and campaign</div>
+    </div>
+    <div class="e-card">
+      <div class="e-title">Data & measurement</div>
+      <div class="e-sub">Attribution, MMM, experimentation, marketing ROI — how we know what's working</div>
+    </div>
+    <div class="e-card">
+      <div class="e-title">Marketing ops & tech</div>
+      <div class="e-sub">MarTech stack, CDP, automation, data governance — the infrastructure everything runs on</div>
+    </div>
+  </div>
+
+  <div class="journey-wrap">
+    <div class="journey">
+      <div class="j-step">Awareness</div>
+      <div class="j-step">Consideration</div>
+      <div class="j-step">Acquisition</div>
+      <div class="j-step">Activation</div>
+      <div class="j-step">Retention</div>
+      <div class="j-step">Advocacy</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <span>Consumer Marketing Framework</span>
+  <span>Strategy · Subfunctions · Enablers</span>
+</footer>
+
+<script>
+const sfs = [
+  {
+    name: "Brand marketing",
+    tagline: "Who we are and what we stand for",
+    color: "#6b63cc",
+    items: [
+      "Brand strategy & positioning — defining what the brand stands for and how it's differentiated",
+      "Brand identity — the visual system, tone of voice, and naming conventions",
+      "Advertising — TV, out-of-home, audio, and digital brand campaigns that build awareness and emotional connection",
+      "PR & communications — earned media, press, and narrative management",
+      "Partnerships & sponsorships — third-party associations that extend brand reach and credibility",
+      "Brand architecture — how product lines, sub-brands, and the master brand relate to each other"
+    ]
+  },
+  {
+    name: "Product marketing",
+    tagline: "Bridge between product and market",
+    color: "#1a8f68",
+    items: [
+      "Consumer research & audience definition — who the product is for, what they need, and what drives their decisions",
+      "Positioning & messaging — the specific story told about each product or feature, grounded in real consumer language",
+      "Go-to-market strategy — launch planning, channel sequencing, and success metrics for new products and features",
+      "Competitive intelligence — tracking what alternatives exist and how to differentiate against them",
+      "Pricing strategy input — working with finance and product on how price shapes perception and demand",
+      "Feature adoption — driving awareness and usage of new capabilities among existing users"
+    ]
+  },
+  {
+    name: "Growth / performance marketing",
+    tagline: "Acquiring new users at scale through paid and owned channels",
+    color: "#1459a0",
+    items: [
+      "Paid social — Meta, TikTok, Pinterest, Snapchat; audience targeting, creative testing, and bid optimization",
+      "Paid search — capturing high-intent demand through Google and Apple Search Ads",
+      "Programmatic & display — reaching audiences across the open web at scale",
+      "SEO & content — building organic search presence to drive sustainable, low-cost acquisition",
+      "App store optimization — improving discoverability and conversion in app stores",
+      "Influencer & creator marketing (paid) — paying creators to reach their audiences on behalf of the brand",
+      "Affiliate & performance partnerships — paying third parties on a cost-per-outcome basis"
+    ]
+  },
+  {
+    name: "Lifecycle / CRM marketing",
+    tagline: "Deepening the relationship from first use through long-term retention",
+    color: "#c94f27",
+    items: [
+      "Onboarding & activation — guiding new users to their first meaningful experience with the product",
+      "Email marketing — personalized, behavior-triggered campaigns across the full customer journey",
+      "Push notifications & in-app messaging — real-time, contextual nudges inside the product",
+      "SMS & direct messaging — high-attention channels for time-sensitive or high-value moments",
+      "Retention campaigns — proactively engaging users before they drift or churn",
+      "Winback & re-engagement — bringing lapsed users back with relevant, timely reasons to return",
+      "Loyalty programs — rewarding high-value behaviors to increase frequency and lifetime value"
+    ]
+  },
+  {
+    name: "Social & community marketing",
+    tagline: "Building presence and conversation where consumers spend their time",
+    color: "#bf4a72",
+    items: [
+      "Organic social — owned accounts on Instagram, TikTok, X, LinkedIn, YouTube; content that earns attention without paid spend",
+      "Content strategy & editorial calendar — deciding what to say, when, in what format, and on which platform",
+      "Community management — responding to comments, building two-way relationships, managing sentiment",
+      "User-generated content — encouraging and amplifying content created by real customers",
+      "Organic creator programs — building ongoing relationships with creators who genuinely use and believe in the product"
+    ]
+  },
+  {
+    name: "Customer experience (CX) marketing",
+    tagline: "Marketing's role after a customer converts",
+    color: "#a86910",
+    items: [
+      "Referral programs — giving satisfied customers a structured reason and mechanism to bring others in",
+      "Reviews & reputation — encouraging honest reviews, responding publicly, and managing brand perception at the decision moment",
+      "Loyalty & subscription management — keeping high-value customers engaged and reducing voluntary churn",
+      "Voice of customer (VOC) — systematically collecting and routing customer feedback back into strategy and product",
+      "Post-purchase content & education — helping customers get more value from what they already have, reducing regret and increasing advocacy"
+    ]
+  }
+];
+
+const container = document.getElementById('sfs');
+
+sfs.forEach(sf => {
+  const card = document.createElement('div');
+  card.className = 'sf-card';
+  card.innerHTML = `
+    <div class="sf-header">
+      <div class="sf-left">
+        <div class="sf-dot" style="background:${sf.color}"></div>
+        <div class="sf-text">
+          <div class="sf-name">${sf.name}</div>
+          <div class="sf-tagline">${sf.tagline}</div>
+        </div>
+      </div>
+      <span class="sf-chevron">⌄</span>
+    </div>
+    <div class="sf-body">
+      <div class="sf-items">
+        ${sf.items.map(i => `<div class="sf-item">${i}</div>`).join('')}
+      </div>
+    </div>`;
+
+  card.querySelector('.sf-header').addEventListener('click', () => {
+    const isOpen = card.classList.contains('open');
+    document.querySelectorAll('.sf-card').forEach(c => c.classList.remove('open'));
+    if (!isOpen) card.classList.add('open');
+  });
+
+  container.appendChild(card);
+});
+</script>
+</body>
+</html>
