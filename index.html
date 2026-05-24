@@ -3,188 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Consumer Marketing, AI & Engineering</title>
+<title>Consumer Marketing, Engineering & AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #faf9f7;
-    --surface: #ffffff;
-    --surface2: #f4f2ee;
-    --border: rgba(0,0,0,0.08);
-    --border-strong: rgba(0,0,0,0.14);
-    --text-primary: #1a1916;
-    --text-secondary: #5a5750;
-    --text-tertiary: #9a9690;
-    --radius-md: 10px;
-    --radius-lg: 14px;
-    --data-bg: #E6F1FB; --data-border: #85B7EB; --data-text: #0C447C; --data-sub: #185FA5;
-    --pred-bg: #E1F5EE; --pred-border: #5DCAA5; --pred-text: #085041; --pred-sub: #0F6E56;
-    --agent-bg: #FAEEDA; --agent-border: #EF9F27; --agent-text: #633806; --agent-sub: #854F0B;
-    --ce-bg: #EEEDFE; --ce-border: #AFA9EC; --ce-text: #26215C; --ce-sub: #3C3489;
+    --bg:#faf9f7;--surface:#fff;--surface2:#f4f2ee;
+    --border:rgba(0,0,0,.08);--border-strong:rgba(0,0,0,.14);
+    --text-primary:#1a1916;--text-secondary:#5a5750;--text-tertiary:#9a9690;
+    --radius-md:10px;--radius-lg:14px;
+    --data-bg:#E6F1FB;--data-border:#85B7EB;--data-text:#0C447C;--data-sub:#185FA5;
+    --pred-bg:#E1F5EE;--pred-border:#5DCAA5;--pred-text:#085041;--pred-sub:#0F6E56;
+    --agent-bg:#FAEEDA;--agent-border:#EF9F27;--agent-text:#633806;--agent-sub:#854F0B;
+    --ce1:#EEEDFE;--ce1b:#AFA9EC;--ce1t:#26215C;--ce1s:#3C3489;
+    --ce2:#E1F5EE;--ce2b:#5DCAA5;--ce2t:#085041;--ce2s:#0F6E56;
+    --ce3:#FAEEDA;--ce3b:#EF9F27;--ce3t:#633806;--ce3s:#854F0B;
+    --ce4:#FAECE7;--ce4b:#F0997B;--ce4t:#4A1B0C;--ce4s:#712B13;
+    --ce5:#FBEAF0;--ce5b:#ED93B1;--ce5t:#4B1528;--ce5s:#993556;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text-primary); min-height: 100vh; padding-bottom: 80px; }
-
-  header { padding: 52px 40px 36px; border-bottom: 0.5px solid var(--border); background: var(--surface); max-width: 960px; margin: 0 auto; }
-  .header-label { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 12px; }
-  h1 { font-family: 'DM Serif Display', serif; font-size: 38px; font-weight: 400; line-height: 1.15; color: var(--text-primary); margin-bottom: 14px; max-width: 620px; }
-  .header-desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; max-width: 580px; }
-
-  .main { max-width: 960px; margin: 0 auto; padding: 40px 40px 0; }
-
-  .nav { display: flex; gap: 6px; margin-bottom: 32px; flex-wrap: wrap; }
-  .nav-btn { font-family: 'DM Sans', sans-serif; font-size: 12px; padding: 7px 16px; border-radius: 20px; border: 0.5px solid var(--border-strong); background: var(--surface); color: var(--text-secondary); cursor: pointer; transition: all .15s; white-space: nowrap; }
-  .nav-btn.active { background: var(--text-primary); color: var(--surface); border-color: var(--text-primary); }
-  .nav-btn:hover:not(.active) { border-color: var(--text-primary); color: var(--text-primary); }
-
-  .section { display: none; }
-  .section.active { display: block; }
-  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
-  .section-title { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; color: var(--text-primary); margin-bottom: 8px; line-height: 1.25; }
-  .section-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.7; max-width: 620px; margin-bottom: 24px; }
-
-  /* ── Shared ── */
-  .group-label { font-size: 10px; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; color: var(--text-tertiary); margin: 20px 0 10px; padding-left: 2px; }
-  .group-label:first-child { margin-top: 0; }
-  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .area-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; display: flex; flex-direction: column; gap: 9px; transition: border-color .15s; }
-  .area-card:hover { border-color: var(--border-strong); }
-  .strategy-card { grid-column: 1 / -1; }
-  .area-top { display: flex; align-items: center; gap: 8px; }
-  .area-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .area-name { font-size: 12px; font-weight: 500; color: var(--text-primary); }
-  .area-type { font-size: 10px; color: var(--text-tertiary); margin-left: auto; flex-shrink: 0; }
-  .area-summary { font-size: 11px; color: var(--text-secondary); line-height: 1.6; flex: 1; }
-  .ai-tags { display: flex; flex-wrap: wrap; gap: 4px; }
-  .ai-tag { font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 500; }
-  .tag-data { background: var(--data-bg); color: var(--data-sub); }
-  .tag-pred { background: var(--pred-bg); color: var(--pred-sub); }
-  .tag-agent { background: var(--agent-bg); color: var(--agent-sub); }
-  .tag-gov { background: var(--surface2); color: var(--text-secondary); border: 0.5px solid var(--border-strong); }
-
-  .aeo-card-note { font-size: 11px; color: var(--text-secondary); line-height: 1.55; padding: 6px 10px; border-radius: 6px; background: var(--surface2); border-left: 2px solid var(--border-strong); }
-  .aeo-card-label { font-size: 9px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
-
-  /* ── Section 1 ── */
-  .strategy-block { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); padding: 20px 22px; margin-bottom: 8px; }
-  .strategy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px; }
-  .s-col-label { font-size: 10px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 8px; }
-  .s-item { font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding-left: 12px; position: relative; margin-bottom: 4px; }
-  .s-item::before { content: "·"; position: absolute; left: 3px; color: var(--text-tertiary); }
-  .informed-row { border-top: 0.5px solid var(--border); padding-top: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
-  .informed-label { font-size: 10px; color: var(--text-tertiary); margin-right: 2px; }
-  .pill { font-size: 11px; padding: 3px 10px; border-radius: 20px; background: var(--surface2); border: 0.5px solid var(--border); color: var(--text-secondary); }
-  .divider { display: flex; align-items: center; gap: 10px; margin: 14px 0; color: var(--text-tertiary); font-size: 11px; }
-  .divider-line { flex: 1; height: 0.5px; background: var(--border); }
-  .subfunctions { display: flex; flex-direction: column; gap: 6px; margin-bottom: 8px; }
-  .sf-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); overflow: hidden; transition: border-color .15s; }
-  .sf-card:hover { border-color: var(--border-strong); }
-  .sf-card.open { border-color: var(--border-strong); }
-  .sf-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; cursor: pointer; gap: 12px; user-select: none; }
-  .sf-left { display: flex; align-items: center; gap: 12px; }
-  .sf-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-  .sf-name { font-size: 13px; font-weight: 500; color: var(--text-primary); margin-bottom: 1px; }
-  .sf-tagline { font-size: 11px; color: var(--text-secondary); }
-  .sf-chevron { font-size: 16px; color: var(--text-tertiary); transition: transform .2s; flex-shrink: 0; }
-  .sf-card.open .sf-chevron { transform: rotate(180deg); }
-  .sf-body { display: none; padding: 0 16px 14px 36px; border-top: 0.5px solid var(--border); }
-  .sf-card.open .sf-body { display: block; }
-  .sf-items { padding-top: 12px; display: flex; flex-direction: column; gap: 5px; }
-  .sf-item { font-size: 12px; color: var(--text-secondary); line-height: 1.6; padding-left: 12px; position: relative; }
-  .sf-item::before { content: "·"; position: absolute; left: 3px; color: var(--text-tertiary); }
-  .enablers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
-  .e-card { background: var(--surface); border: 0.5px dashed var(--border-strong); border-radius: var(--radius-md); padding: 12px 14px; }
-  .e-title { font-size: 12px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px; }
-  .e-sub { font-size: 11px; color: var(--text-tertiary); line-height: 1.5; }
-  .journey-wrap { margin-top: 12px; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 10px 16px; }
-  .journey { display: flex; align-items: center; }
-  .j-step { flex: 1; text-align: center; font-size: 10px; letter-spacing: .04em; color: var(--text-tertiary); padding: 2px; position: relative; }
-  .j-step + .j-step::before { content: "›"; position: absolute; left: -5px; color: var(--border-strong); font-size: 13px; }
-
-  /* ── Section 2 ── */
-  .ai-steps { display: flex; flex-direction: column; gap: 10px; }
-  .ai-step { border-radius: var(--radius-md); overflow: hidden; }
-  .ai-step-header { padding: 16px 18px; display: flex; align-items: flex-start; gap: 14px; }
-  .ai-num { font-size: 12px; font-weight: 500; width: 20px; flex-shrink: 0; padding-top: 1px; }
-  .ai-name { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
-  .ai-desc { font-size: 12px; line-height: 1.6; }
-  .ai-examples { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; line-height: 1.5; }
-  .aeo-note { font-size: 11px; margin-top: 8px; padding: 6px 10px; border-radius: 6px; line-height: 1.55; border-left: 2px solid; }
-  .aeo-label { font-size: 9px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; margin-right: 5px; opacity: .75; }
-  .data-bg { background: var(--data-bg); border: 0.5px solid var(--data-border); }
-  .data-num { color: var(--data-sub); } .data-name { color: var(--data-text); } .data-desc { color: var(--data-sub); }
-  .data-ex { background: rgba(255,255,255,.5); color: var(--data-sub); }
-  .data-aeo { background: rgba(255,255,255,.5); color: var(--data-text); border-color: var(--data-sub); }
-  .pred-bg { background: var(--pred-bg); border: 0.5px solid var(--pred-border); }
-  .pred-num { color: var(--pred-sub); } .pred-name { color: var(--pred-text); } .pred-desc { color: var(--pred-sub); }
-  .pred-ex { background: rgba(255,255,255,.5); color: var(--pred-sub); }
-  .agent-bg { background: var(--agent-bg); border: 0.5px solid var(--agent-border); }
-  .agent-num { color: var(--agent-sub); } .agent-name { color: var(--agent-text); } .agent-desc { color: var(--agent-sub); }
-  .agent-ex { background: rgba(255,255,255,.5); color: var(--agent-sub); }
-  .agent-aeo { background: rgba(255,255,255,.5); color: var(--agent-text); border-color: var(--agent-sub); }
-  .gov-block { border-radius: var(--radius-md); border: 1px dashed var(--border-strong); padding: 16px 18px; background: var(--surface); }
-  .gov-title { font-size: 13px; font-weight: 500; color: var(--text-secondary); margin-bottom: 6px; }
-  .gov-desc { font-size: 12px; color: var(--text-tertiary); line-height: 1.6; }
-  .gov-aeo { font-size: 11px; margin-top: 10px; padding: 6px 10px; border-radius: 6px; line-height: 1.55; border-left: 2px solid var(--border-strong); background: var(--surface2); color: var(--text-secondary); }
-
-  /* ── Section 4 ── */
-  .ce-premise { background: var(--ce-bg); border: 0.5px solid var(--ce-border); border-radius: var(--radius-lg); padding: 18px 20px; margin-bottom: 20px; }
-  .ce-premise-title { font-size: 13px; font-weight: 500; color: var(--ce-text); margin-bottom: 6px; }
-  .ce-premise-body { font-size: 12px; color: var(--ce-sub); line-height: 1.65; }
-
-  .ce-card { background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color .15s; }
-  .ce-card:hover { border-color: var(--border-strong); }
-  .ce-card-top { display: flex; align-items: center; gap: 8px; }
-  .ce-card-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .ce-card-name { font-size: 12px; font-weight: 500; color: var(--text-primary); }
-  .ce-card-type { font-size: 10px; color: var(--text-tertiary); margin-left: auto; }
-
-  .ce-principle { font-size: 11px; font-weight: 500; color: var(--ce-sub); background: var(--ce-bg); border-left: 2px solid var(--ce-border); padding: 5px 9px; border-radius: 0 5px 5px 0; line-height: 1.45; }
-  .ce-principle-label { font-size: 9px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ce-sub); opacity: .7; margin-bottom: 2px; }
-
-  .ce-unlocks { font-size: 11px; color: var(--text-secondary); line-height: 1.6; }
-  .ce-builds { display: flex; flex-direction: column; gap: 4px; }
-  .ce-build-label { font-size: 9px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
-  .ce-build-item { font-size: 11px; color: var(--text-secondary); line-height: 1.5; padding-left: 12px; position: relative; }
-  .ce-build-item::before { content: "→"; position: absolute; left: 0; color: var(--ce-sub); font-size: 10px; }
-
-  .ce-maturity { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
-  .ce-level { font-size: 9px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
-  .ce-level-locked { background: var(--surface2); color: var(--text-tertiary); border: 0.5px solid var(--border-strong); }
-  .ce-level-unlocked { background: var(--ce-bg); color: var(--ce-sub); }
-  .ce-level-arrow { font-size: 9px; color: var(--text-tertiary); }
-
-  footer { max-width: 960px; margin: 48px auto 0; padding: 20px 40px 0; font-size: 11px; color: var(--text-tertiary); display: flex; justify-content: space-between; align-items: center; border-top: 0.5px solid var(--border); }
-
-  @media (max-width: 680px) {
-    header, .main, footer { padding-left: 20px; padding-right: 20px; }
-    h1 { font-size: 28px; }
-    .strategy-grid { grid-template-columns: 1fr; gap: 16px; }
-    .enablers { grid-template-columns: repeat(2, 1fr); }
-    .card-grid { grid-template-columns: 1fr; }
-    .sf-body { padding-left: 20px; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text-primary);min-height:100vh;padding-bottom:80px}
+  header{padding:52px 40px 40px;border-bottom:.5px solid var(--border);background:var(--surface);max-width:960px;margin:0 auto}
+  .header-label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:12px}
+  h1{font-family:'DM Serif Display',serif;font-size:38px;font-weight:400;line-height:1.15;color:var(--text-primary);margin-bottom:14px;max-width:640px}
+  .header-desc{font-size:14px;color:var(--text-secondary);line-height:1.7;max-width:600px}
+  .main{max-width:960px;margin:0 auto;padding:40px 40px 0}
+  .nav{display:flex;gap:6px;margin-bottom:32px;flex-wrap:wrap}
+  .nav-btn{font-family:'DM Sans',sans-serif;font-size:12px;padding:7px 16px;border-radius:20px;border:.5px solid var(--border-strong);background:var(--surface);color:var(--text-secondary);cursor:pointer;transition:all .15s;white-space:nowrap}
+  .nav-btn.active{background:var(--text-primary);color:var(--surface);border-color:var(--text-primary)}
+  .nav-btn:hover:not(.active){border-color:var(--text-primary);color:var(--text-primary)}
+  .section{display:none}.section.active{display:block}
+  .section-eyebrow{font-size:10px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px}
+  .section-title{font-family:'DM Serif Display',serif;font-size:26px;font-weight:400;color:var(--text-primary);margin-bottom:8px;line-height:1.25}
+  .section-desc{font-size:13px;color:var(--text-secondary);line-height:1.7;max-width:640px;margin-bottom:24px}
+  /* shared */
+  .group-label{font-size:10px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--text-tertiary);margin:20px 0 10px;padding-left:2px}
+  .group-label:first-child{margin-top:0}
+  .card-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .area-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;display:flex;flex-direction:column;gap:9px;transition:border-color .15s}
+  .area-card:hover{border-color:var(--border-strong)}
+  .strategy-card{grid-column:1/-1}
+  .area-top{display:flex;align-items:center;gap:8px}
+  .area-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+  .area-name{font-size:12px;font-weight:500;color:var(--text-primary)}
+  .area-type{font-size:10px;color:var(--text-tertiary);margin-left:auto;flex-shrink:0}
+  .area-summary{font-size:11px;color:var(--text-secondary);line-height:1.6;flex:1}
+  .ai-tags{display:flex;flex-wrap:wrap;gap:4px}
+  .ai-tag{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:500}
+  .tag-data{background:var(--data-bg);color:var(--data-sub)}
+  .tag-pred{background:var(--pred-bg);color:var(--pred-sub)}
+  .tag-agent{background:var(--agent-bg);color:var(--agent-sub)}
+  .tag-gov{background:var(--surface2);color:var(--text-secondary);border:.5px solid var(--border-strong)}
+  .aeo-card-note{font-size:11px;color:var(--text-secondary);line-height:1.55;padding:6px 10px;border-radius:6px;background:var(--surface2);border-left:2px solid var(--border-strong)}
+  .aeo-card-label{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:3px}
+  /* s1 */
+  .strategy-block{background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;margin-bottom:8px}
+  .strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:16px}
+  .s-col-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);margin-bottom:8px}
+  .s-item{font-size:12px;color:var(--text-secondary);line-height:1.6;padding-left:12px;position:relative;margin-bottom:4px}
+  .s-item::before{content:"·";position:absolute;left:3px;color:var(--text-tertiary)}
+  .informed-row{border-top:.5px solid var(--border);padding-top:12px;display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .informed-label{font-size:10px;color:var(--text-tertiary);margin-right:2px}
+  .pill{font-size:11px;padding:3px 10px;border-radius:20px;background:var(--surface2);border:.5px solid var(--border);color:var(--text-secondary)}
+  .divider{display:flex;align-items:center;gap:10px;margin:14px 0;color:var(--text-tertiary);font-size:11px}
+  .divider-line{flex:1;height:.5px;background:var(--border)}
+  .subfunctions{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+  .sf-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-md);overflow:hidden;transition:border-color .15s}
+  .sf-card:hover{border-color:var(--border-strong)}.sf-card.open{border-color:var(--border-strong)}
+  .sf-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;gap:12px;user-select:none}
+  .sf-left{display:flex;align-items:center;gap:12px}
+  .sf-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .sf-name{font-size:13px;font-weight:500;color:var(--text-primary);margin-bottom:1px}
+  .sf-tagline{font-size:11px;color:var(--text-secondary)}
+  .sf-chevron{font-size:16px;color:var(--text-tertiary);transition:transform .2s;flex-shrink:0}
+  .sf-card.open .sf-chevron{transform:rotate(180deg)}
+  .sf-body{display:none;padding:0 16px 14px 36px;border-top:.5px solid var(--border)}
+  .sf-card.open .sf-body{display:block}
+  .sf-items{padding-top:12px;display:flex;flex-direction:column;gap:5px}
+  .sf-item{font-size:12px;color:var(--text-secondary);line-height:1.6;padding-left:12px;position:relative}
+  .sf-item::before{content:"·";position:absolute;left:3px;color:var(--text-tertiary)}
+  .enablers{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+  .e-card{background:var(--surface);border:.5px dashed var(--border-strong);border-radius:var(--radius-md);padding:12px 14px}
+  .e-title{font-size:12px;font-weight:500;color:var(--text-secondary);margin-bottom:4px}
+  .e-sub{font-size:11px;color:var(--text-tertiary);line-height:1.5}
+  .journey-wrap{margin-top:12px;background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-md);padding:10px 16px}
+  .journey{display:flex;align-items:center}
+  .j-step{flex:1;text-align:center;font-size:10px;letter-spacing:.04em;color:var(--text-tertiary);padding:2px;position:relative}
+  .j-step+.j-step::before{content:"›";position:absolute;left:-5px;color:var(--border-strong);font-size:13px}
+  /* s2 — engineering */
+  .eng-premise{border-radius:var(--radius-lg);padding:18px 20px;margin-bottom:24px;border:.5px solid var(--ce1b);background:var(--ce1)}
+  .eng-premise-title{font-size:13px;font-weight:500;color:var(--ce1t);margin-bottom:6px}
+  .eng-premise-body{font-size:12px;color:var(--ce1s);line-height:1.65}
+  .eng-principles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:20px}
+  .eng-principle-card{background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-md);padding:12px 14px}
+  .eng-principle-name{font-size:12px;font-weight:500;color:var(--text-primary);margin-bottom:4px}
+  .eng-principle-def{font-size:11px;color:var(--text-secondary);line-height:1.55}
+  .build-block{margin-bottom:16px;border-radius:var(--radius-lg);border:.5px solid var(--border);overflow:hidden}
+  .build-header{padding:14px 18px;display:flex;align-items:flex-start;gap:14px}
+  .build-num{font-size:20px;font-weight:500;flex-shrink:0;line-height:1.1;min-width:28px}
+  .build-title{font-size:14px;font-weight:500;margin-bottom:3px}
+  .build-def{font-size:12px;line-height:1.6}
+  .build-rows{border-top:.5px solid var(--border)}
+  .build-row{display:grid;grid-template-columns:160px 1fr;border-bottom:.5px solid var(--border)}
+  .build-row:last-child{border-bottom:none}
+  .build-area{padding:11px 14px;display:flex;align-items:flex-start;gap:8px;border-right:.5px solid var(--border);background:var(--surface2)}
+  .build-area-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:3px}
+  .build-area-name{font-size:11px;font-weight:500;color:var(--text-primary);line-height:1.4}
+  .build-area-type{font-size:9px;color:var(--text-tertiary);margin-top:1px}
+  .build-cell{padding:11px 14px;font-size:11px;color:var(--text-secondary);line-height:1.6;background:var(--surface)}
+  .b1 .build-header{background:var(--ce1)}.b1 .build-num{color:var(--ce1t)}.b1 .build-title{color:var(--ce1t)}.b1 .build-def{color:var(--ce1s)}
+  .b2 .build-header{background:var(--ce2)}.b2 .build-num{color:var(--ce2t)}.b2 .build-title{color:var(--ce2t)}.b2 .build-def{color:var(--ce2s)}
+  .b3 .build-header{background:var(--ce3)}.b3 .build-num{color:var(--ce3t)}.b3 .build-title{color:var(--ce3t)}.b3 .build-def{color:var(--ce3s)}
+  .b4 .build-header{background:var(--ce4)}.b4 .build-num{color:var(--ce4t)}.b4 .build-title{color:var(--ce4t)}.b4 .build-def{color:var(--ce4s)}
+  .b5 .build-header{background:var(--ce5)}.b5 .build-num{color:var(--ce5t)}.b5 .build-title{color:var(--ce5t)}.b5 .build-def{color:var(--ce5s)}
+  .eng-bridge{background:var(--surface);border:.5px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;margin-top:24px}
+  .eng-bridge-title{font-size:12px;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
+  .eng-bridge-body{font-size:12px;color:var(--text-secondary);line-height:1.65;margin-bottom:4px}
+  /* s3 — AI framework */
+  .ai-steps{display:flex;flex-direction:column;gap:10px}
+  .ai-step{border-radius:var(--radius-md);overflow:hidden}
+  .ai-step-header{padding:16px 18px;display:flex;align-items:flex-start;gap:14px}
+  .ai-num{font-size:12px;font-weight:500;width:20px;flex-shrink:0;padding-top:1px}
+  .ai-name{font-size:14px;font-weight:500;margin-bottom:4px}
+  .ai-desc{font-size:12px;line-height:1.6}
+  .ai-examples{font-size:11px;margin-top:8px;padding:6px 10px;border-radius:6px;line-height:1.5}
+  .aeo-note{font-size:11px;margin-top:8px;padding:6px 10px;border-radius:6px;line-height:1.55;border-left:2px solid}
+  .aeo-label{font-size:9px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;margin-right:5px;opacity:.75}
+  .data-bg{background:var(--data-bg);border:.5px solid var(--data-border)}.data-num{color:var(--data-sub)}.data-name{color:var(--data-text)}.data-desc{color:var(--data-sub)}.data-ex{background:rgba(255,255,255,.5);color:var(--data-sub)}.data-aeo{background:rgba(255,255,255,.5);color:var(--data-text);border-color:var(--data-sub)}
+  .pred-bg{background:var(--pred-bg);border:.5px solid var(--pred-border)}.pred-num{color:var(--pred-sub)}.pred-name{color:var(--pred-text)}.pred-desc{color:var(--pred-sub)}.pred-ex{background:rgba(255,255,255,.5);color:var(--pred-sub)}
+  .agent-bg{background:var(--agent-bg);border:.5px solid var(--agent-border)}.agent-num{color:var(--agent-sub)}.agent-name{color:var(--agent-text)}.agent-desc{color:var(--agent-sub)}.agent-ex{background:rgba(255,255,255,.5);color:var(--agent-sub)}.agent-aeo{background:rgba(255,255,255,.5);color:var(--agent-text);border-color:var(--agent-sub)}
+  .gov-block{border-radius:var(--radius-md);border:1px dashed var(--border-strong);padding:16px 18px;background:var(--surface)}
+  .gov-title{font-size:13px;font-weight:500;color:var(--text-secondary);margin-bottom:6px}
+  .gov-desc{font-size:12px;color:var(--text-tertiary);line-height:1.6}
+  .gov-aeo{font-size:11px;margin-top:10px;padding:6px 10px;border-radius:6px;line-height:1.55;border-left:2px solid var(--border-strong);background:var(--surface2);color:var(--text-secondary)}
+  /* crosswalk table */
+  .crosswalk{margin-top:28px;border-radius:var(--radius-lg);border:.5px solid var(--border);overflow:hidden}
+  .crosswalk-header{padding:14px 18px;background:var(--surface2);border-bottom:.5px solid var(--border)}
+  .crosswalk-title{font-size:12px;font-weight:500;color:var(--text-primary);margin-bottom:3px}
+  .crosswalk-desc{font-size:11px;color:var(--text-secondary);line-height:1.55}
+  .crosswalk-cols{display:grid;grid-template-columns:1fr 24px 1fr;background:var(--surface2);border-bottom:.5px solid var(--border-strong)}
+  .crosswalk-col-label{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--text-tertiary);padding:8px 14px}
+  .crosswalk-row{display:grid;grid-template-columns:1fr 24px 1fr;border-bottom:.5px solid var(--border);align-items:stretch}
+  .crosswalk-row:last-child{border-bottom:none}
+  .cw-left{padding:11px 14px;display:flex;align-items:center;gap:8px}
+  .cw-badge{font-size:11px;font-weight:500;padding:3px 10px;border-radius:5px;white-space:nowrap}
+  .cw-left-text{font-size:11px;color:var(--text-secondary);line-height:1.4}
+  .cw-arrow{display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-tertiary);border-left:.5px solid var(--border);border-right:.5px solid var(--border);background:var(--surface2)}
+  .cw-right{padding:11px 14px;display:flex;flex-direction:column;gap:5px}
+  .cw-build{display:flex;align-items:flex-start;gap:7px}
+  .cw-build-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:4px}
+  .cw-build-text{font-size:11px;color:var(--text-secondary);line-height:1.45}
+  .cw-build-name{font-weight:500;color:var(--text-primary)}
+  .cw-note{font-size:10px;color:var(--text-tertiary);font-style:italic;margin-top:2px;padding-left:13px}
+  footer{max-width:960px;margin:48px auto 0;padding:20px 40px 0;font-size:11px;color:var(--text-tertiary);display:flex;justify-content:space-between;align-items:center;border-top:.5px solid var(--border)}
+  @media(max-width:680px){
+    header,.main,footer{padding-left:20px;padding-right:20px}
+    h1{font-size:28px}.strategy-grid{grid-template-columns:1fr;gap:16px}
+    .enablers{grid-template-columns:repeat(2,1fr)}.card-grid{grid-template-columns:1fr}
+    .sf-body{padding-left:20px}.build-row{grid-template-columns:1fr}
+    .build-area{border-right:none;border-bottom:.5px solid var(--border)}
+    .crosswalk-cols,.crosswalk-row{grid-template-columns:1fr 20px 1fr}
+    .eng-principles{grid-template-columns:1fr}
   }
 </style>
 </head>
 <body>
-
 <header>
   <div class="header-label">Reference framework</div>
-  <h1>Consumer Marketing, AI & Engineering</h1>
-  <p class="header-desc">A complete view of consumer marketing — how it's structured, how AI works as a system, how AI enables each area, and how a computer engineering mindset unlocks the full potential of AI in marketing.</p>
+  <h1>Consumer Marketing, Engineering & AI</h1>
+  <p class="header-desc">Consumer marketing is a system. This framework covers what that system contains, how to engineer it for performance, how AI amplifies a well-engineered system, and how the combination enables each area of marketing to operate at its full potential.</p>
 </header>
-
 <div class="main">
   <div class="nav">
-    <button class="nav-btn active" onclick="showSection('framework', event)">1. Consumer marketing</button>
-    <button class="nav-btn" onclick="showSection('ai', event)">2. AI framework</button>
-    <button class="nav-btn" onclick="showSection('enables', event)">3. How AI enables each area</button>
-    <button class="nav-btn" onclick="showSection('ce', event)">4. The engineering advantage</button>
+    <button class="nav-btn active" onclick="showSection('framework',event)">1. Consumer marketing</button>
+    <button class="nav-btn" onclick="showSection('eng',event)">2. Engineering the system</button>
+    <button class="nav-btn" onclick="showSection('ai',event)">3. AI framework</button>
+    <button class="nav-btn" onclick="showSection('enables',event)">4. How it all enables each area</button>
   </div>
 
-  <!-- SECTION 1 -->
+  <!-- S1 -->
   <div id="s-framework" class="section active">
     <div class="section-eyebrow">Section 1</div>
     <div class="section-title">Consumer marketing framework</div>
@@ -212,11 +209,7 @@
       </div>
       <div class="informed-row">
         <span class="informed-label">Set by CMO, informed by:</span>
-        <span class="pill">Customer insight</span>
-        <span class="pill">Market research</span>
-        <span class="pill">Competitive intelligence</span>
-        <span class="pill">Business strategy</span>
-        <span class="pill">Finance & revenue goals</span>
+        <span class="pill">Customer insight</span><span class="pill">Market research</span><span class="pill">Competitive intelligence</span><span class="pill">Business strategy</span><span class="pill">Finance & revenue goals</span>
       </div>
     </div>
     <div class="divider"><div class="divider-line"></div><span>informs all six subfunctions</span><div class="divider-line"></div></div>
@@ -228,98 +221,91 @@
       <div class="e-card"><div class="e-title">Data & measurement</div><div class="e-sub">Attribution, MMM, experimentation, marketing ROI — how we know what's working</div></div>
       <div class="e-card"><div class="e-title">Marketing ops & tech</div><div class="e-sub">MarTech stack, CDP, automation, data governance — the infrastructure everything runs on</div></div>
     </div>
-    <div class="journey-wrap">
-      <div class="journey">
-        <div class="j-step">Awareness</div><div class="j-step">Consideration</div><div class="j-step">Acquisition</div><div class="j-step">Activation</div><div class="j-step">Retention</div><div class="j-step">Advocacy</div>
-      </div>
-    </div>
+    <div class="journey-wrap"><div class="journey"><div class="j-step">Awareness</div><div class="j-step">Consideration</div><div class="j-step">Acquisition</div><div class="j-step">Activation</div><div class="j-step">Retention</div><div class="j-step">Advocacy</div></div></div>
   </div>
 
-  <!-- SECTION 2 -->
-  <div id="s-ai" class="section">
+  <!-- S2 — ENGINEERING -->
+  <div id="s-eng" class="section">
     <div class="section-eyebrow">Section 2</div>
-    <div class="section-title">AI framework</div>
-    <p class="section-desc">AI in consumer marketing is a four-layer system — each layer building on the one before it. Without clean data, predictions are unreliable. Without predictions, agentic execution is directionless. Without governance, the system operates without accountability.</p>
-    <div class="ai-steps">
-      <div class="ai-step data-bg">
-        <div class="ai-step-header">
-          <div class="ai-num data-num">1</div>
-          <div style="flex:1">
-            <div class="ai-name data-name">Data — always-on clean signals</div>
-            <div class="ai-desc data-desc">A unified first-party data engine feeding real-time customer behavior into AI systems. The foundation everything else depends on — without it, predictions are guesswork and agentic execution fires at the wrong people with the wrong message.</div>
-            <div class="ai-examples data-ex">CDP with real-time event streaming · First-party identity graph · Behavioral event taxonomy · Consent & preference management</div>
-            <div class="aeo-note data-aeo"><span class="aeo-label">AEO</span>Adds a new signal type: AI share-of-voice tracking — measuring how often and how accurately your brand is cited in AI-generated answers, alongside traditional brand health and search signals.</div>
-          </div>
-        </div>
+    <div class="section-title">Engineering consumer marketing as a system</div>
+    <p class="section-desc">Most marketing organizations are collections of tools, channels, and campaigns. An engineering mindset treats marketing as a system — with inputs, outputs, feedback loops, and a designed architecture. These five builds make consumer marketing structurally better. AI amplifies each of them, but the engineering foundation comes first.</p>
+
+    <div class="eng-premise">
+      <div class="eng-premise-title">The engineering principles that apply</div>
+      <div class="eng-premise-body">Three computer science concepts map directly onto consumer marketing and unlock performance improvements that no individual tool can deliver on its own.</div>
+    </div>
+
+    <div class="eng-principles">
+      <div class="eng-principle-card">
+        <div class="eng-principle-name">Systems design</div>
+        <div class="eng-principle-def">Design the whole before building the parts. Every tool, every data flow, every integration should be a deliberate architectural decision — not an accumulation of point solutions.</div>
       </div>
-      <div class="ai-step pred-bg">
-        <div class="ai-step-header">
-          <div class="ai-num pred-num">2</div>
-          <div style="flex:1">
-            <div class="ai-name pred-name">Predictions — simulate before you spend</div>
-            <div class="ai-desc pred-desc">Predictive models that simulate LTV outcomes, churn risk, and channel elasticity before budget is allocated. Strategy becomes simulation-led — you know which bets are likely to pay off before making them, not after.</div>
-            <div class="ai-examples pred-ex">LTV prediction · Churn risk scoring · Marketing mix modeling · Channel elasticity simulation · Next-best-action engines</div>
-          </div>
-        </div>
+      <div class="eng-principle-card">
+        <div class="eng-principle-name">Feedback loops</div>
+        <div class="eng-principle-def">A system that doesn't learn from its outputs is open-loop. Every marketing action should produce data that flows back into the system and improves the next decision.</div>
       </div>
-      <div class="ai-step agent-bg">
-        <div class="ai-step-header">
-          <div class="ai-num agent-num">3</div>
-          <div style="flex:1">
-            <div class="ai-name agent-name">Agentic execution — scale what works</div>
-            <div class="ai-desc agent-desc">Human-configured AI agents that dynamically generate, test, and scale thousands of creative variants and interactions in real time. Humans set the strategy and guardrails — agents handle the execution volume and speed that no human team can match.</div>
-            <div class="ai-examples agent-ex">Dynamic creative optimization · Behavioral trigger automation · AI content generation · Conversational AI · Real-time bid management</div>
-            <div class="aeo-note agent-aeo"><span class="aeo-label">AEO</span>Adds a new execution surface: agents generating and maintaining structured content, schema markup, and entity signals at scale — ensuring AI systems consistently extract and cite your brand accurately across every answer engine.</div>
-          </div>
-        </div>
+      <div class="eng-principle-card">
+        <div class="eng-principle-name">Event-driven architecture</div>
+        <div class="eng-principle-def">Consumer behavior is a continuous stream of events. A system that responds to signals in real time will always outperform one that operates on a weekly or monthly batch schedule.</div>
       </div>
-      <div class="gov-block">
-        <div class="gov-title">4. Governance — runs across all three layers</div>
-        <div class="gov-desc">Programmatic kill-switches, algorithmic bias monitoring, and strict human-in-the-loop validation layers. Not a fourth step — a horizontal constraint that applies at every layer. What makes the system trustworthy, not just powerful.</div>
-        <div class="gov-aeo"><span class="aeo-label">AEO</span>Governance now includes monitoring how AI systems describe your brand in generated answers — correcting inaccurate citations, flagging brand misrepresentation in LLM outputs, and ensuring your entity data is authoritative across AI platforms.</div>
-      </div>
+    </div>
+
+    <div class="group-label">Five foundational builds</div>
+    <div id="eng-builds"></div>
+
+    <div class="eng-bridge">
+      <div class="eng-bridge-title">What comes next</div>
+      <div class="eng-bridge-body">These five builds make consumer marketing structurally more effective — with or without AI. AI is the amplification layer that sits on top of this foundation. A well-engineered data layer makes AI predictions more accurate. A well-designed experimentation system makes AI creative testing more powerful. A robust feedback loop makes AI agents smarter over time.</div>
+      <div class="eng-bridge-body" style="margin-top:8px">Section 3 describes the AI framework. Section 4 shows exactly how AI and engineering combine to enable each marketing area. The relationship between this section and the AI framework is mapped explicitly at the start of section 3.</div>
     </div>
   </div>
 
-  <!-- SECTION 3 -->
-  <div id="s-enables" class="section">
+  <!-- S3 — AI -->
+  <div id="s-ai" class="section">
     <div class="section-eyebrow">Section 3</div>
-    <div class="section-title">How AI enables each area</div>
-    <p class="section-desc">The AI framework doesn't add a new layer to consumer marketing — it enables each existing area to operate with greater precision, speed, and scale. AEO callouts show where the shift to AI-generated answers creates new requirements within existing subfunctions.</p>
+    <div class="section-title">AI framework</div>
+    <p class="section-desc">AI in consumer marketing is a four-layer system — each layer building on the one before it. It is most powerful when built on top of the engineering foundation described in section 2. Without clean data infrastructure, predictions are unreliable. Without a designed experimentation system, agentic execution fires blind. Without feedback loops, governance has nothing to learn from.</p>
+    <div class="ai-steps">
+      <div class="ai-step data-bg"><div class="ai-step-header"><div class="ai-num data-num">1</div><div style="flex:1"><div class="ai-name data-name">Data — always-on clean signals</div><div class="ai-desc data-desc">A unified first-party data engine feeding real-time customer behavior into AI systems. The foundation everything else depends on — without it, predictions are guesswork and agentic execution fires at the wrong people with the wrong message.</div><div class="ai-examples data-ex">CDP with real-time event streaming · First-party identity graph · Behavioral event taxonomy · Consent & preference management</div><div class="aeo-note data-aeo"><span class="aeo-label">AEO</span>Adds a new signal type: AI share-of-voice tracking — measuring how often and accurately your brand is cited in AI-generated answers, alongside traditional brand health and search signals.</div></div></div></div>
+      <div class="ai-step pred-bg"><div class="ai-step-header"><div class="ai-num pred-num">2</div><div style="flex:1"><div class="ai-name pred-name">Predictions — simulate before you spend</div><div class="ai-desc pred-desc">Predictive models that simulate LTV outcomes, churn risk, and channel elasticity before budget is allocated. Strategy becomes simulation-led — you know which bets are likely to pay off before making them, not after.</div><div class="ai-examples pred-ex">LTV prediction · Churn risk scoring · Marketing mix modeling · Channel elasticity simulation · Next-best-action engines</div></div></div></div>
+      <div class="ai-step agent-bg"><div class="ai-step-header"><div class="ai-num agent-num">3</div><div style="flex:1"><div class="ai-name agent-name">Agentic execution — scale what works</div><div class="ai-desc agent-desc">Human-configured AI agents that dynamically generate, test, and scale thousands of creative variants and interactions in real time. Humans set strategy and guardrails — agents handle execution volume and speed no human team can match.</div><div class="ai-examples agent-ex">Dynamic creative optimization · Behavioral trigger automation · AI content generation · Conversational AI · Real-time bid management</div><div class="aeo-note agent-aeo"><span class="aeo-label">AEO</span>Adds a new execution surface: agents generating and maintaining structured content, schema markup, and entity signals at scale — ensuring AI systems consistently cite your brand accurately across every answer engine.</div></div></div></div>
+      <div class="gov-block"><div class="gov-title">4. Governance — runs across all three layers</div><div class="gov-desc">Programmatic kill-switches, algorithmic bias monitoring, and strict human-in-the-loop validation. Not a fourth step — a horizontal constraint that applies at every layer. What makes the system trustworthy, not just powerful.</div><div class="gov-aeo"><span class="aeo-label">AEO</span>Governance now includes monitoring how AI systems describe your brand in generated answers — correcting inaccurate citations, flagging brand misrepresentation in LLM outputs, and ensuring your entity data is authoritative across AI platforms.</div></div>
+    </div>
+
+    <div class="crosswalk">
+      <div class="crosswalk-header">
+        <div class="crosswalk-title">How the AI framework connects to the engineering foundation</div>
+        <div class="crosswalk-desc">Each AI capability in this section is produced by one or more of the five engineering builds in section 2. The builds are the architecture; the AI layers are the capability that emerges from it.</div>
+      </div>
+      <div class="crosswalk-cols">
+        <div class="crosswalk-col-label">Section 3 — AI capability</div>
+        <div></div>
+        <div class="crosswalk-col-label">Section 2 — Engineering build that produces it</div>
+      </div>
+      <div id="crosswalk-rows"></div>
+    </div>
+  </div>
+
+  <!-- S4 — ENABLES -->
+  <div id="s-enables" class="section">
+    <div class="section-eyebrow">Section 4</div>
+    <div class="section-title">How engineering and AI enable each area</div>
+    <p class="section-desc">The engineering foundation makes consumer marketing structurally sound. AI amplifies it. Together, they enable each subfunction and enabler to operate with a precision, speed, and learning capacity that neither approach delivers alone. AEO callouts show where the shift to AI-generated answers creates additional new requirements.</p>
     <div id="enables-grid"></div>
   </div>
-
-  <!-- SECTION 4 -->
-  <div id="s-ce" class="section">
-    <div class="section-eyebrow">Section 4</div>
-    <div class="section-title">The engineering advantage</div>
-    <p class="section-desc">AI gives every marketer access to powerful tools. What determines whether those tools deliver level-1 or level-5 outcomes is the architecture underneath them. A computer engineering mindset — systems thinking, data modeling, feedback loop design — is what closes that gap. This section shows what that looks like in each area of consumer marketing.</p>
-
-    <div class="ce-premise">
-      <div class="ce-premise-title">The core argument</div>
-      <div class="ce-premise-body">Most marketing orgs stall at level 1 or 2 of AI maturity — not because the tools don't exist, but because the infrastructure underneath them isn't engineered properly. Clean data models, unified identity graphs, event-driven architectures, closed feedback loops — these are computer science problems, not marketing problems. A marketer who thinks like an engineer doesn't just buy AI. They design the system that makes AI work. The builds in this section are what that looks like in practice.</div>
-    </div>
-
-    <div id="ce-grid"></div>
-  </div>
-
 </div>
-
-<footer>
-  <span>Consumer Marketing, AI & Engineering</span>
-  <span>Strategy · Subfunctions · Enablers</span>
-</footer>
+<footer><span>Consumer Marketing, Engineering & AI</span><span>System · Subfunctions · Enablers</span></footer>
 
 <script>
-function showSection(id, e) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('s-' + id).classList.add('active');
+function showSection(id,e){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('s-'+id).classList.add('active');
   e.target.classList.add('active');
 }
 
-// ── Section 1 subfunctions ──────────────────────────────────────────────────
-const sfs = [
+// S1 subfunctions
+const sfs=[
   {name:'Brand marketing',tagline:'Who we are and what we stand for',color:'#6b63cc',items:['Brand strategy & positioning — defining what the brand stands for and how it\'s differentiated','Brand identity — the visual system, tone of voice, and naming conventions','Advertising — TV, out-of-home, audio, and digital brand campaigns that build awareness and emotional connection','PR & communications — earned media, press, and narrative management','Partnerships & sponsorships — third-party associations that extend brand reach and credibility','Brand architecture — how product lines, sub-brands, and the master brand relate to each other']},
   {name:'Product marketing',tagline:'Bridge between product and market',color:'#1a8f68',items:['Consumer research & audience definition — who the product is for, what they need, and what drives their decisions','Positioning & messaging — the specific story told about each product or feature, grounded in real consumer language','Go-to-market strategy — launch planning, channel sequencing, and success metrics for new products and features','Competitive intelligence — tracking what alternatives exist and how to differentiate against them','Pricing strategy input — working with finance and product on how price shapes perception and demand','Feature adoption — driving awareness and usage of new capabilities among existing users']},
   {name:'Growth / performance marketing',tagline:'Acquiring new users at scale through paid and owned channels',color:'#1459a0',items:['Paid social — Meta, TikTok, Pinterest, Snapchat; audience targeting, creative testing, and bid optimization','Paid search — capturing high-intent demand through Google and Apple Search Ads','Programmatic & display — reaching audiences across the open web at scale','SEO & content — building organic search presence to drive sustainable, low-cost acquisition','App store optimization — improving discoverability and conversion in app stores','Influencer & creator marketing (paid) — paying creators to reach their audiences on behalf of the brand','Affiliate & performance partnerships — paying third parties on a cost-per-outcome basis']},
@@ -327,220 +313,193 @@ const sfs = [
   {name:'Social & community marketing',tagline:'Building presence and conversation where consumers spend their time',color:'#bf4a72',items:['Organic social — owned accounts on Instagram, TikTok, X, LinkedIn, YouTube; content that earns attention without paid spend','Content strategy & editorial calendar — deciding what to say, when, in what format, and on which platform','Community management — responding to comments, building two-way relationships, managing sentiment','User-generated content — encouraging and amplifying content created by real customers','Organic creator programs — building ongoing relationships with creators who genuinely use and believe in the product']},
   {name:'Customer experience (CX) marketing',tagline:'Marketing\'s role after a customer converts',color:'#a86910',items:['Referral programs — giving satisfied customers a structured reason and mechanism to bring others in','Reviews & reputation — encouraging honest reviews, responding publicly, and managing brand perception at the decision moment','Loyalty & subscription management — keeping high-value customers engaged and reducing voluntary churn','Voice of customer (VOC) — systematically collecting and routing customer feedback back into strategy and product','Post-purchase content & education — helping customers get more value from what they already have, reducing regret and increasing advocacy']}
 ];
-const sfList = document.getElementById('sf-list');
-sfs.forEach(sf => {
-  const card = document.createElement('div');
-  card.className = 'sf-card';
-  card.innerHTML = `<div class="sf-header"><div class="sf-left"><div class="sf-dot" style="background:${sf.color}"></div><div><div class="sf-name">${sf.name}</div><div class="sf-tagline">${sf.tagline}</div></div></div><span class="sf-chevron">&#8964;</span></div><div class="sf-body"><div class="sf-items">${sf.items.map(i=>`<div class="sf-item">${i}</div>`).join('')}</div></div>`;
-  card.querySelector('.sf-header').addEventListener('click',()=>{const isOpen=card.classList.contains('open');sfList.querySelectorAll('.sf-card').forEach(c=>c.classList.remove('open'));if(!isOpen)card.classList.add('open');});
+const sfList=document.getElementById('sf-list');
+sfs.forEach(sf=>{
+  const card=document.createElement('div');card.className='sf-card';
+  card.innerHTML=`<div class="sf-header"><div class="sf-left"><div class="sf-dot" style="background:${sf.color}"></div><div><div class="sf-name">${sf.name}</div><div class="sf-tagline">${sf.tagline}</div></div></div><span class="sf-chevron">&#8964;</span></div><div class="sf-body"><div class="sf-items">${sf.items.map(i=>`<div class="sf-item">${i}</div>`).join('')}</div></div>`;
+  card.querySelector('.sf-header').addEventListener('click',()=>{const o=card.classList.contains('open');sfList.querySelectorAll('.sf-card').forEach(c=>c.classList.remove('open'));if(!o)card.classList.add('open');});
   sfList.appendChild(card);
 });
 
-// ── Section 3 ──────────────────────────────────────────────────────────────
-const tagLabels={data:'Data',pred:'Predictions',agent:'Agentic',gov:'Governance'};
-const tagClasses={data:'tag-data',pred:'tag-pred',agent:'tag-agent',gov:'tag-gov'};
-const s3groups=[
-  {label:'Strategy & principles',cards:[
-    {name:'Strategy & guiding principles',color:'#888780',type:'Foundation',wide:true,summary:'AI makes strategy dynamic rather than static. Real-time behavioral signals replace assumed segments, predictive models turn budget allocation into a simulation exercise before money is committed, and the test & learn principle becomes operationally real when agents run experiments continuously rather than sequentially.',aeo:null,tags:['data','pred','agent','gov']}
-  ]},
-  {label:'Six subfunctions',cards:[
-    {name:'Brand marketing',color:'#6b63cc',type:'Subfunction',summary:'AI enables creative at scale without proportional headcount growth, and brand health measured continuously rather than quarterly. Agents handle volume and variation — humans set direction and quality.',aeo:'AEO adds a new brand battleground: how AI systems describe and cite your brand in generated answers. Entity optimization, E-E-A-T signals, and AI share-of-voice tracking become brand marketing responsibilities — ensuring the brand is represented accurately and favorably when consumers ask AI assistants about your category.',tags:['data','agent','gov']},
-    {name:'Product marketing',color:'#1a8f68',type:'Subfunction',summary:'Real usage signals replace survey-based insight. At launch, AI tests hundreds of message variants simultaneously — so positioning is grounded in what resonated with real audiences, not internal consensus.',aeo:'AEO changes how positioning lands: the way you structure and format content now determines whether AI systems extract and cite your value proposition accurately. Prompt journey mapping — understanding the questions consumers ask AI that lead to your category — becomes a product marketing input alongside traditional keyword research.',tags:['data','pred','agent']},
-    {name:'Growth / performance',color:'#1459a0',type:'Subfunction',summary:'The most AI-mature subfunction today. LTV prediction changes what you\'re willing to pay per acquisition. Agents optimize bids, audiences, and creative 24/7 at a scale no human team can match.',aeo:'AEO opens a new acquisition channel: zero-click brand presence in AI-generated answers. Structured content for AI citation and schema optimization become growth levers — driving high-intent brand awareness among consumers who never click through to a website but act on what AI tells them.',tags:['data','pred','agent','gov']},
-    {name:'Lifecycle / CRM',color:'#c94f27',type:'Subfunction',summary:'Churn risk scoring identifies at-risk customers before they cancel. Behavioral triggers replace batch sends — messages reach individuals at the moment of relevance, shaped by their own actions.',aeo:null,tags:['data','pred','agent']},
-    {name:'Social & community',color:'#bf4a72',type:'Subfunction',summary:'AI enables content at the speed of culture. Social signals feed audience models continuously. Humans set creative direction — agents handle volume, scheduling, and real-time sentiment monitoring.',aeo:null,tags:['data','agent']},
-    {name:'CX marketing',color:'#a86910',type:'Subfunction',summary:'Proactive rather than reactive: AI predicts churn before cancellation. Conversational AI handles reviews, loyalty, and support at scale — individual attention without the headcount to deliver it manually.',aeo:null,tags:['pred','agent','gov']}
-  ]},
-  {label:'Enablers',cards:[
-    {name:'Customer insight',color:'#888780',type:'Enabler',summary:'Insight shifts from periodic research to continuous signal monitoring. Predictive models surface patterns across millions of data points that human researchers would never find.',aeo:null,tags:['data','pred']},
-    {name:'Creative & content',color:'#888780',type:'Enabler',summary:'The creative function shifts from production bottleneck to strategic function. AI handles volume and variation — human creatives focus on direction, judgment, and the ideas only humans can generate.',aeo:'AEO requires a new content discipline: structuring every piece of content so AI engines can extract and cite it independently. This means leading with direct answers, implementing schema markup, and writing for AI readability alongside human readability.',tags:['agent']},
-    {name:'Data & measurement',color:'#888780',type:'Enabler',summary:'The technical home of the AI framework. MMM and attribution become more accurate with cleaner inputs. Agent performance feeds back into models automatically — the system gets smarter with every action.',aeo:'AEO adds a new measurement surface: tracking brand share-of-voice across AI platforms (ChatGPT, Perplexity, Google AI Overviews) alongside traditional search and paid metrics. This is an emerging discipline with no settled standard yet.',tags:['data','pred','agent']},
-    {name:'Marketing ops & tech',color:'#888780',type:'Enabler',summary:'The infrastructure layer that makes the AI system run. As AI matures, configuring, monitoring, and improving agents becomes one of the most strategically important functions in the marketing org.',aeo:null,tags:['data','pred','agent','gov']}
-  ]}
+// S2 builds
+const builds=[
+  {num:'01',cls:'b1',title:'Unified behavioral data layer',
+   def:'A governed schema for every meaningful user action — event taxonomy, server-side collection, identity graph, feature store. The foundation every other build draws from. Build this first. Without it, every downstream system is limited by the quality of its inputs.',
+   rows:[
+    {name:'Brand',color:'#6b63cc',type:'Subfunction',cell:'Brand health signals — sentiment, share of voice, review velocity — feed into a single unified score updating weekly rather than quarterly. Correlates brand equity shifts with downstream CAC weeks in advance.'},
+    {name:'Product marketing',color:'#1a8f68',type:'Subfunction',cell:'Real product usage data replaces survey-based insight. You see which features consumers actually use vs. which ones they said they\'d value. Positioning grounded in behavior, not assumption.'},
+    {name:'Growth',color:'#1459a0',type:'Subfunction',cell:'Server-side conversion APIs recover the 30–50% of conversions lost to browser restrictions. First-party signals power lookalike models as third-party cookies disappear. Acquisition efficiency protected.'},
+    {name:'Lifecycle',color:'#c94f27',type:'Subfunction',cell:'Real-time behavioral events replace calendar-based triggers. Every session below baseline, every feature unused for N days fires immediately — not on Tuesday at 10am.'},
+    {name:'CX',color:'#a86910',type:'Subfunction',cell:'Every review, support ticket, and NPS verbatim flows into a unified structured signal — classified, tagged, routed automatically to the team that can act on it.'},
+    {name:'Data & measurement',color:'#888780',type:'Enabler',cell:'Data quality monitoring, schema validation, and metric drift alerts flag issues before they corrupt decisions downstream. The technical home of the entire data layer.'},
+   ]},
+  {num:'02',cls:'b2',title:'Prediction engine',
+   def:'Models that take behavioral signals as inputs and output a probability or score — churn risk, LTV, content performance, referral timing. The objective function differs by subfunction. The infrastructure is the same. Build one prediction platform; deploy across all six areas.',
+   rows:[
+    {name:'Strategy',color:'#888780',type:'Foundation',cell:'Channel elasticity models simulate which budget allocation will drive the most revenue before the plan is locked. Annual strategy shifts from negotiation to continuously updated simulation.'},
+    {name:'Brand',color:'#6b63cc',type:'Subfunction',cell:'A statistical model quantifies the lag between brand health signals and downstream CAC — giving you quantitative language to predict performance marketing impact from brand investment weeks in advance.'},
+    {name:'Growth',color:'#1459a0',type:'Subfunction',cell:'First-session LTV prediction scores new users within their first interaction. CAC targets become a variable informed by expected return, not a fixed ceiling applied uniformly across all users.'},
+    {name:'Lifecycle',color:'#c94f27',type:'Subfunction',cell:'Churn risk scoring runs as a production service — every active user scored daily, retraining on outcomes weekly. Feeds directly into intervention logic: push, discount, or human outreach.'},
+    {name:'CX',color:'#a86910',type:'Subfunction',cell:'Referral timing model predicts the optimal moment to ask each customer based on engagement peaks, NPS inflection points, and historical referral conversion for similar cohorts.'},
+    {name:'Customer insight',color:'#888780',type:'Enabler',cell:'Models surface patterns across millions of unstructured data points — reviews, tickets, community posts — that human researchers would never find. Insight generation becomes continuous.'},
+   ]},
+  {num:'03',cls:'b3',title:'Experimentation system',
+   def:'A multi-armed bandit infrastructure that allocates attention across options in real time, learns from outcomes, and updates the allocation — replacing sequential A/B tests that take weeks to reach significance. One framework deployed across creative testing, message testing, GTM sequencing, and budget allocation.',
+   rows:[
+    {name:'Strategy',color:'#888780',type:'Foundation',cell:'Test & learn shifts from a stated principle to a default operating mode. The system runs thousands of tests simultaneously, so strategy adjusts on live results rather than waiting for the next planning cycle.'},
+    {name:'Brand',color:'#6b63cc',type:'Subfunction',cell:'Creative variants tested at scale — visual style, message theme, emotional tone — correlated against brand recall and downstream conversion. Creative intuition becomes a continuously updated evidence base.'},
+    {name:'Product marketing',color:'#1a8f68',type:'Subfunction',cell:'Hundreds of message variants tested per launch with the bandit automatically allocating more traffic to winners. Positioning decisions are evidence-based before the campaign locks, not after it runs.'},
+    {name:'Growth',color:'#1459a0',type:'Subfunction',cell:'Creative testing pipeline generates variants via generative AI, deploys them, runs a bandit, culls underperformers, generates replacements. Human brand team sets guardrails. The system runs the loop.'},
+    {name:'Lifecycle',color:'#c94f27',type:'Subfunction',cell:'Message, timing, channel, and offer variants tested simultaneously per user segment. The system learns which intervention type works for which behavioral profile and updates the policy continuously.'},
+    {name:'Data & measurement',color:'#888780',type:'Enabler',cell:'Incrementality testing infrastructure runs always-on holdout tests producing causal estimates of channel contribution — not correlational attribution. Experimentation and measurement share the same infrastructure.'},
+   ]},
+  {num:'04',cls:'b4',title:'Event-driven automation layer',
+   def:'An architecture where user behavior is the trigger and the system response is determined by logic, not a calendar. Something happens → a signal fires → a response executes. Replaces scheduled batch processes across lifecycle, creative, VOC, community, and content workflows with real-time signal-driven pipelines.',
+   rows:[
+    {name:'Brand',color:'#6b63cc',type:'Subfunction',cell:'A content pipeline that monitors cultural signals, generates candidate content within brand guardrails, applies automated safety filters, and surfaces approved candidates for human review — enabling real-time cultural participation.'},
+    {name:'Product marketing',color:'#1a8f68',type:'Subfunction',cell:'GTM sequencing engine ingests early launch signals and dynamically resequences the rollout — which segment sees the product next, which message leads, which channel gets more budget — updating as adoption data comes in.'},
+    {name:'Growth',color:'#1459a0',type:'Subfunction',cell:'Budget allocation engine monitors channel elasticity and audience saturation continuously, generating a daily recommended reallocation. Approved changes execute automatically. Humans review outliers and set constraints.'},
+    {name:'Lifecycle',color:'#c94f27',type:'Subfunction',cell:'Every significant behavioral signal fires an event that routes to the optimal response — push, email, in-app, SMS, discount, human outreach — determined by the next-best-action model, not a campaign calendar.'},
+    {name:'Social',color:'#bf4a72',type:'Subfunction',cell:'Trend velocity monitor fires alerts when a topic is accelerating faster than baseline. Community signal extraction pipeline routes insight automatically to product, marketing, and lifecycle teams.'},
+    {name:'CX',color:'#a86910',type:'Subfunction',cell:'Early warning detection fires when behavioral signals predict a negative review or escalation — triggering proactive outreach before dissatisfaction crystallizes. Prevention is cheaper than response.'},
+    {name:'Creative & content',color:'#888780',type:'Enabler',cell:'Generative AI production pipeline: brief → generation within brand guardrails → quality filter → human review queue → publish. The creative team shifts from writing every output to directing the system.'},
+   ]},
+  {num:'05',cls:'b5',title:'Feedback loops',
+   def:'The mechanism that makes the system learn rather than just execute. Outcomes flow back into the models that generated the decisions. Without feedback loops, every build above is open-loop: it executes but never improves. This is what separates a marketing system that compounds over time from one that plateaus.',
+   rows:[
+    {name:'Strategy',color:'#888780',type:'Foundation',cell:'Quarterly planning becomes a continuous review of what the system has learned. Strategy adjusts based on real outcomes rather than waiting for an annual cycle to incorporate new information.'},
+    {name:'Brand',color:'#6b63cc',type:'Subfunction',cell:'Brand signal data feeds back into the positioning model — when consumer language around your category shifts, the system flags it before the brand team would notice in a quarterly tracker.'},
+    {name:'Growth',color:'#1459a0',type:'Subfunction',cell:'LTV outcomes from each acquired cohort feed back into the prediction model, improving first-session scoring accuracy over time. The model gets smarter with every acquisition cycle automatically.'},
+    {name:'Lifecycle',color:'#c94f27',type:'Subfunction',cell:'Every intervention outcome — did the push increase sessions? did the discount prevent churn? — feeds back into the next-best-action model. The intervention policy improves continuously without manual analysis.'},
+    {name:'Social',color:'#bf4a72',type:'Subfunction',cell:'Post-level performance feeds back into the content generation model — topic, format, hook type, tone, timing — updated based on what actually drove outcomes for which audience segments.'},
+    {name:'CX',color:'#a86910',type:'Subfunction',cell:'Downstream LTV of referred users feeds back into the referral timing model. The system learns which moments produce the highest-value referrals, optimizing for quality rather than volume over time.'},
+    {name:'Data & measurement',color:'#888780',type:'Enabler',cell:'Data quality issues detected by monitoring flow back into collection configuration — schema violations trigger fixes at the source. The measurement system maintains its own integrity automatically.'},
+   ]}
 ];
-const enablesGrid=document.getElementById('enables-grid');
-s3groups.forEach(group=>{
-  const label=document.createElement('div');label.className='group-label';label.textContent=group.label;enablesGrid.appendChild(label);
-  const grid=document.createElement('div');grid.className='card-grid';
-  group.cards.forEach(area=>{
-    const card=document.createElement('div');
-    card.className='area-card'+(area.wide?' strategy-card':'');
-    const aeoBlock=area.aeo?`<div class="aeo-card-note"><div class="aeo-card-label">AEO</div>${area.aeo}</div>`:'';
-    card.innerHTML=`<div class="area-top"><div class="area-dot" style="background:${area.color}"></div><div class="area-name">${area.name}</div><div class="area-type">${area.type}</div></div><div class="area-summary">${area.summary}</div>${aeoBlock}<div class="ai-tags">${area.tags.map(t=>`<span class="ai-tag ${tagClasses[t]}">${tagLabels[t]}</span>`).join('')}</div>`;
-    grid.appendChild(card);
-  });
-  enablesGrid.appendChild(grid);
+
+const engBuilds=document.getElementById('eng-builds');
+builds.forEach(b=>{
+  const block=document.createElement('div');
+  block.className=`build-block ${b.cls}`;
+  const rowsHtml=b.rows.map(r=>`
+    <div class="build-row">
+      <div class="build-area"><div class="build-area-dot" style="background:${r.color}"></div><div><div class="build-area-name">${r.name}</div><div class="build-area-type">${r.type}</div></div></div>
+      <div class="build-cell">${r.cell}</div>
+    </div>`).join('');
+  block.innerHTML=`<div class="build-header"><div class="build-num">${b.num}</div><div style="flex:1"><div class="build-title">${b.title}</div><div class="build-def">${b.def}</div></div></div><div class="build-rows">${rowsHtml}</div>`;
+  engBuilds.appendChild(block);
 });
 
-// ── Section 4 ──────────────────────────────────────────────────────────────
-const ceGroups = [
+// S3 crosswalk
+const crosswalkData=[
   {
-    label: 'Foundation — build this before everything else',
-    cards: [
-      {
-        name: 'Unified data infrastructure', color: '#888780', type: 'Foundation', wide: true,
-        principle: 'Distributed systems design',
-        principleDesc: 'Every AI application across all six subfunctions is only as good as the data underneath it. Before any model, any agent, any tool — design the data architecture first.',
-        unlocks: 'A unified customer identity graph, real-time event streaming, and a governed feature store that every downstream model can query without bespoke data pipelines. This is what separates a marketing org that gets 10x from AI from one that gets 1.1x. The tools are identical. The infrastructure is not.',
-        builds: [
-          'Event taxonomy — a governed schema for every meaningful user action: name, properties, validation rules, version control',
-          'Server-side collection — Meta CAPI, Google Enhanced Conversions, TikTok Events API to recover the 30–50% of conversions lost to browser restrictions',
-          'Identity graph — a single customer record across all touchpoints, resolving anonymous and known behavior into one profile',
-          'Feature store — a queryable repository of customer attributes that every model across all subfunctions can access in real time'
-        ]
-      }
-    ]
+    aiLabel:'Data',aiBg:'var(--data-bg)',aiColor:'var(--data-sub)',aiDesc:'Always-on clean signals',
+    builds:[
+      {dot:'#3C3489',name:'Build 01: Unified behavioral data layer',desc:'The event taxonomy, identity graph, server-side collection, and feature store that make always-on clean signals possible.'}
+    ],
+    note:null
   },
   {
-    label: 'Six subfunctions',
-    cards: [
-      {
-        name: 'Brand marketing', color: '#6b63cc', type: 'Subfunction',
-        principle: 'Closed-loop systems thinking',
-        principleDesc: 'Brand health is not a quarterly report. It is a signal that should feed back into strategy in near-real time.',
-        unlocks: 'A brand monitoring system that correlates sentiment signals with downstream CAC and conversion rate — giving you the quantitative language to predict when brand equity dips will hit performance marketing, before they show up in the dashboard.',
-        builds: [
-          'Brand signal aggregator — unified pipeline pulling sentiment, share of voice, review velocity, and AEO citation frequency into one score',
-          'Brand-to-performance lag model — statistical model quantifying how brand health shifts translate into CAC changes over time',
-          'AEO knowledge graph — entity markup and structured content architecture engineered so AI answer engines cite your brand accurately'
-        ]
-      },
-      {
-        name: 'Product marketing', color: '#1a8f68', type: 'Subfunction',
-        principle: 'Hypothesis-driven engineering',
-        principleDesc: 'Every product launch is an experiment. Treat it like one — with a hypothesis, a control, a success metric, and a decision rule defined before the test runs.',
-        unlocks: 'A GTM sequencing engine that dynamically resequences the rollout based on early signal — which segment sees the product next, which message leads, which channel gets more budget. A multi-armed bandit applied to go-to-market instead of sequential A/B testing.',
-        builds: [
-          'Review corpus NLP pipeline — ingests your reviews and competitors\' at scale, maps what consumers actually value vs. your current messaging',
-          'Continuous message testing infrastructure — multi-armed bandit across headline, value prop, and feature emphasis variants running always-on',
-          'Synthetic research panel — LLM trained on your customer interviews, support tickets, and NPS verbatims, queryable like a research panel in minutes not weeks'
-        ]
-      },
-      {
-        name: 'Growth / performance', color: '#1459a0', type: 'Subfunction',
-        principle: 'Control systems engineering',
-        principleDesc: 'A growth marketing system is a control system: it has inputs (spend, audiences, creative), outputs (conversions, LTV), and a feedback loop. Design it like one.',
-        unlocks: 'A budget allocation engine that continuously simulates channel elasticity, audience saturation, and creative fatigue — and generates a recommended daily reallocation with confidence intervals. Not a dashboard humans read. A system that proposes and executes on approval.',
-        builds: [
-          'First-session LTV prediction model — scores new users within their first session based on behavioral signals, feeds directly into bidding strategy',
-          'Autonomous creative testing pipeline — generates variants via generative AI, runs multi-armed bandit, culls underperformers, generates replacements automatically',
-          'Cross-platform attribution system — sits above platform-native reporting, combines server-side data with incrementality tests to show true channel ROI'
-        ]
-      },
-      {
-        name: 'Lifecycle / CRM', color: '#c94f27', type: 'Subfunction',
-        principle: 'Event-driven architecture',
-        principleDesc: 'Lifecycle marketing is not a campaign system. It is an event-driven system. User behavior is the trigger. The response is determined by a model, not a calendar.',
-        unlocks: 'A self-optimizing lifecycle policy: the system observes user state, selects the optimal intervention, executes it, observes the outcome, and updates its policy. Humans define the objective function and constraints. The system learns the optimal policy within them.',
-        builds: [
-          'Production churn scoring service — scores every active user daily, retrains on outcomes weekly, feeds directly into intervention logic',
-          'Next-best-action engine — contextual bandit that selects the optimal action (push, email, in-app, discount, human) per user based on full behavioral history',
-          'Feedback loop infrastructure — outcome data from every intervention flows back into the model automatically, closing the loop without manual analysis'
-        ]
-      },
-      {
-        name: 'Social & community', color: '#bf4a72', type: 'Subfunction',
-        principle: 'Signal extraction and pipeline design',
-        principleDesc: 'Community is not just a place to post content. It is an always-on data source. Build the extraction layer and it becomes your best research panel.',
-        unlocks: 'A content performance intelligence model that predicts expected engagement for candidate posts before they\'re published — trained on your historical post attributes and outcomes. Social strategy built on a calibrated forecast, not intuition.',
-        builds: [
-          'Trend velocity monitor — tracks conversation acceleration across social and search, surfaces opportunities before they peak not after',
-          'Community signal extraction pipeline — classifies questions, complaints, and language patterns from community content, routes insight to product, marketing, and lifecycle',
-          'Content attribute database — every post tagged with structured attributes correlated against outcomes, feeding a continuously updated performance model'
-        ]
-      },
-      {
-        name: 'CX marketing', color: '#a86910', type: 'Subfunction',
-        principle: 'Multi-stage optimization and feedback design',
-        principleDesc: 'The advocacy loop is an optimization problem: identify the right moment, personalize the ask, measure the downstream impact, feed back into the model. Most companies never build the loop — they just build the landing page.',
-        unlocks: 'An engineered advocacy system: optimal timing model per customer based on engagement peaks and NPS inflection points, personalized ask based on communication preferences, downstream LTV tracking of referred users, closed feedback loop that improves future timing.',
-        builds: [
-          'VOC structured data pipeline — ingests every review, ticket, and NPS verbatim, classifies and routes in real time to the teams that can act on it',
-          'Early warning detection model — identifies at-risk customers from behavioral signals before dissatisfaction is expressed, triggers proactive outreach',
-          'Referral timing model — predicts the optimal moment to ask each customer for a referral, trained on historical referral conversion and downstream LTV data'
-        ]
-      }
-    ]
+    aiLabel:'Predictions',aiBg:'var(--pred-bg)',aiColor:'var(--pred-sub)',aiDesc:'Simulate before you spend',
+    builds:[
+      {dot:'#0F6E56',name:'Build 02: Prediction engine',desc:'The model infrastructure — churn scoring, LTV prediction, MMM — that turns behavioral signals into scores and forecasts.'}
+    ],
+    note:null
   },
   {
-    label: 'Enablers',
-    cards: [
-      {
-        name: 'Customer insight', color: '#888780', type: 'Enabler',
-        principle: 'Scalable data processing',
-        principleDesc: 'Insight generation should not be bottlenecked by analyst bandwidth. Build the pipeline and insight becomes continuous, not periodic.',
-        unlocks: 'NLP classification at scale across every customer signal source — reviews, tickets, community posts, NPS verbatims — producing structured, queryable insight in real time rather than quarterly reports.',
-        builds: [
-          'Automated insight classification pipeline — ingests unstructured customer signal, outputs structured theme and sentiment data',
-          'Synthetic research panel — LLM trained on your proprietary customer data, queryable on demand for fast directional insight'
-        ]
-      },
-      {
-        name: 'Creative & content', color: '#888780', type: 'Enabler',
-        principle: 'Production pipeline engineering',
-        principleDesc: 'Creative production is a pipeline. Engineer it: inputs (briefs, brand guardrails), processing (generation, variation, testing), outputs (approved content), feedback (performance data back into the model).',
-        unlocks: 'A creative production system where generative AI handles volume and variation within human-set guardrails, performance data feeds back into generation parameters, and the human creative team shifts from production to direction.',
-        builds: [
-          'Brand voice fine-tuning — a model trained on approved brand content that generates on-brand copy without manual review of every output',
-          'Creative performance feedback loop — post-level performance data flows back into generation parameters, improving output quality over time'
-        ]
-      },
-      {
-        name: 'Data & measurement', color: '#888780', type: 'Enabler',
-        principle: 'Systems reliability and observability',
-        principleDesc: 'A measurement system is only trustworthy if it is observable, validated, and monitored. Apply engineering reliability standards to marketing measurement.',
-        unlocks: 'A measurement infrastructure where data quality is monitored automatically, anomalies are flagged before they corrupt decisions, and every metric has a documented definition, owner, and validation test.',
-        builds: [
-          'Data quality monitoring — automated checks on event volume, schema conformance, and metric drift that flag issues before they reach dashboards',
-          'Incrementality testing infrastructure — a structured framework for running always-on holdout tests that produce causal estimates, not correlational ones'
-        ]
-      },
-      {
-        name: 'Marketing ops & tech', color: '#888780', type: 'Enabler',
-        principle: 'Systems architecture and integration design',
-        principleDesc: 'The marketing stack is a distributed system. Design it as one — with documented APIs, clear data contracts between tools, versioned integrations, and a governed change management process.',
-        unlocks: 'A marketing infrastructure where adding a new tool doesn\'t break three existing integrations, where data flows are documented and monitored, and where the team that configures and maintains the system is treated as a strategic engineering function.',
-        builds: [
-          'Stack architecture diagram — a living document of every tool, every integration, every data flow, maintained and versioned like a technical architecture doc',
-          'Integration governance layer — documented data contracts between tools, automated validation that integrations are working, and a change management process for stack modifications'
-        ]
-      }
-    ]
+    aiLabel:'Agentic execution',aiBg:'var(--agent-bg)',aiColor:'var(--agent-sub)',aiDesc:'Scale what works',
+    builds:[
+      {dot:'#854F0B',name:'Build 03: Experimentation system',desc:'The multi-armed bandit that continuously learns which actions, messages, and creative perform best — so agents scale the right things.'},
+      {dot:'#712B13',name:'Build 04: Event-driven automation',desc:'The pipeline infrastructure that executes those learned actions at the speed and scale no human team can match.'}
+    ],
+    note:'Agentic execution requires two engineering builds — the most powerful AI capability is also the most complex to engineer.'
+  },
+  {
+    aiLabel:'Governance',aiBg:'var(--surface2)',aiColor:'var(--text-secondary)',aiDesc:'Horizontal across all layers',
+    builds:[
+      {dot:'#993556',name:'Build 05: Feedback loops',desc:'The mechanism that keeps the system accountable and self-correcting — outcomes flow back into models, detecting drift and improving the policy over time.'}
+    ],
+    note:'Governance as a feedback loop is more powerful than governance as a restriction: the system monitors its own outputs and corrects, rather than waiting for a human audit.'
   }
 ];
 
-const ceGrid = document.getElementById('ce-grid');
-ceGroups.forEach(group => {
-  const label = document.createElement('div');
-  label.className = 'group-label';
-  label.textContent = group.label;
-  ceGrid.appendChild(label);
+const cwRows=document.getElementById('crosswalk-rows');
+crosswalkData.forEach(row=>{
+  const el=document.createElement('div');
+  el.className='crosswalk-row';
+  const buildsHtml=row.builds.map(b=>`
+    <div class="cw-build">
+      <div class="cw-build-dot" style="background:${b.dot}"></div>
+      <div class="cw-build-text"><span class="cw-build-name">${b.name}</span> — ${b.desc}</div>
+    </div>`).join('')+(row.note?`<div class="cw-note">${row.note}</div>`:'');
+  el.innerHTML=`
+    <div class="cw-left"><span class="cw-badge" style="background:${row.aiBg};color:${row.aiColor}">${row.aiLabel}</span><div class="cw-left-text">${row.aiDesc}</div></div>
+    <div class="cw-arrow">→</div>
+    <div class="cw-right">${buildsHtml}</div>`;
+  cwRows.appendChild(el);
+});
 
-  const grid = document.createElement('div');
-  grid.className = 'card-grid';
+// S4 enables
+const tl={data:'Data',pred:'Predictions',agent:'Agentic',gov:'Governance'};
+const tc={data:'tag-data',pred:'tag-pred',agent:'tag-agent',gov:'tag-gov'};
+const s4=[
+  {label:'Strategy & principles',cards:[
+    {name:'Strategy & guiding principles',color:'#888780',type:'Foundation',wide:true,
+     summary:'Engineering makes strategy dynamic: a prediction engine turns budget allocation into a simulation before money is committed, an experimentation system makes test & learn operationally real, and feedback loops mean strategy adjusts continuously on live results rather than annually on stale data. AI amplifies each of these — making predictions more accurate, experiments faster, and feedback loops tighter.',
+     aeo:null,tags:['data','pred','agent','gov']}
+  ]},
+  {label:'Six subfunctions',cards:[
+    {name:'Brand marketing',color:'#6b63cc',type:'Subfunction',
+     summary:'Engineering delivers continuous brand health measurement and a brand-to-performance correlation model that predicts CAC impact from brand equity shifts weeks in advance. AI amplifies this with generative creative at scale and always-on sentiment monitoring — humans set direction, the system handles volume and early warning.',
+     aeo:'AEO adds a knowledge graph engineering problem: entity markup, schema.org implementation, and structured content architecture engineered so AI answer engines consistently cite your brand accurately. AI share-of-voice tracking becomes a new brand health metric.',
+     tags:['data','pred','agent','gov']},
+    {name:'Product marketing',color:'#1a8f68',type:'Subfunction',
+     summary:'Engineering delivers continuous message testing infrastructure and a synthetic research panel that replaces 6-week qual studies with on-demand insight. AI amplifies this with hundreds of variant tests run simultaneously at launch and dynamic GTM sequencing that resequences the rollout based on live adoption signals.',
+     aeo:'AEO changes how positioning lands: structured content architecture determines whether AI systems extract and cite your value proposition accurately. Prompt journey mapping — the questions consumers ask AI that lead to your category — becomes a product marketing input.',
+     tags:['data','pred','agent']},
+    {name:'Growth / performance',color:'#1459a0',type:'Subfunction',
+     summary:'Engineering delivers server-side measurement infrastructure that recovers lost conversions and LTV-informed bidding that treats CAC as a variable. AI amplifies this with autonomous creative testing pipelines, real-time budget allocation agents, and predictive audience models that make every acquisition decision smarter than the last.',
+     aeo:'AEO opens a new acquisition channel: zero-click brand presence in AI-generated answers. Structured content and schema optimization drive high-intent brand awareness among consumers who act on what AI tells them without ever clicking through.',
+     tags:['data','pred','agent','gov']},
+    {name:'Lifecycle / CRM',color:'#c94f27',type:'Subfunction',
+     summary:'Engineering delivers a clean event taxonomy and event-driven trigger architecture that replaces batch campaign scheduling. AI amplifies this with churn prediction as a production service, a next-best-action engine that selects the optimal intervention per user, and a self-improving policy that gets smarter from every outcome.',
+     aeo:null,tags:['data','pred','agent']},
+    {name:'Social & community',color:'#bf4a72',type:'Subfunction',
+     summary:'Engineering delivers a content performance intelligence model that predicts engagement before publishing, and a community signal extraction pipeline that routes insight automatically to the teams that can act on it. AI amplifies this with trend velocity monitoring, generative content production within brand guardrails, and real-time sentiment monitoring at scale.',
+     aeo:null,tags:['data','agent']},
+    {name:'CX marketing',color:'#a86910',type:'Subfunction',
+     summary:'Engineering delivers an early warning detection system that identifies at-risk customers before they express dissatisfaction, and a referral timing model that optimizes the ask moment per customer. AI amplifies this with conversational AI that differentiates service by customer value, and a feedback loop that improves the advocacy system from every referral outcome.',
+     aeo:null,tags:['pred','agent','gov']}
+  ]},
+  {label:'Enablers',cards:[
+    {name:'Customer insight',color:'#888780',type:'Enabler',
+     summary:'Engineering delivers a structured signal pipeline that classifies and routes every customer signal in real time. AI amplifies this with predictive models that surface patterns no human researcher would find, and a synthetic research panel that produces on-demand directional insight in minutes rather than weeks.',
+     aeo:null,tags:['data','pred']},
+    {name:'Creative & content',color:'#888780',type:'Enabler',
+     summary:'Engineering delivers a production pipeline — brief, generation, quality filter, human review, publish — that treats creative as a system rather than a series of one-off tasks. AI amplifies this with generative models trained on your brand voice, creative performance feedback loops, and experimentation infrastructure that scales what works.',
+     aeo:'AEO requires a new content discipline: structuring every piece of content so AI engines can extract and cite it independently. Writing for AI readability — direct answers, schema markup, authoritative entity signals — sits alongside writing for human readability.',
+     tags:['agent']},
+    {name:'Data & measurement',color:'#888780',type:'Enabler',
+     summary:'Engineering delivers data quality monitoring, schema validation, and incrementality testing infrastructure that make measurement trustworthy. AI amplifies this with automated anomaly detection, faster MMM cycles with cleaner inputs, and agent performance feedback that closes the loop between execution and learning automatically.',
+     aeo:'AEO adds a new measurement surface: tracking brand share-of-voice across AI platforms (ChatGPT, Perplexity, Google AI Overviews) alongside traditional search and paid metrics. An emerging discipline with no settled standard yet — early movers will define it.',
+     tags:['data','pred','agent']},
+    {name:'Marketing ops & tech',color:'#888780',type:'Enabler',
+     summary:'Engineering delivers a documented stack architecture with governed data contracts and integration monitoring — the marketing stack treated as a distributed system. AI amplifies this by making the team that configures, monitors, and improves the agents a strategic engineering function, not a technical support role.',
+     aeo:null,tags:['data','pred','agent','gov']}
+  ]}
+];
 
-  group.cards.forEach(card => {
-    const el = document.createElement('div');
-    el.className = 'ce-card' + (card.wide ? ' strategy-card' : '');
-    el.innerHTML = `
-      <div class="ce-card-top">
-        <div class="ce-card-dot" style="background:${card.color}"></div>
-        <div class="ce-card-name">${card.name}</div>
-        <div class="ce-card-type">${card.type}</div>
-      </div>
-      <div class="ce-principle">
-        <div class="ce-principle-label">CE principle</div>
-        <strong>${card.principle}</strong> — ${card.principleDesc}
-      </div>
-      <div class="ce-unlocks"><strong style="font-weight:500">What it unlocks:</strong> ${card.unlocks}</div>
-      <div class="ce-builds">
-        <div class="ce-build-label">What to build</div>
-        ${card.builds.map(b => `<div class="ce-build-item">${b}</div>`).join('')}
-      </div>`;
-    grid.appendChild(el);
+const eg=document.getElementById('enables-grid');
+s4.forEach(g=>{
+  const l=document.createElement('div');l.className='group-label';l.textContent=g.label;eg.appendChild(l);
+  const gr=document.createElement('div');gr.className='card-grid';
+  g.cards.forEach(a=>{
+    const c=document.createElement('div');c.className='area-card'+(a.wide?' strategy-card':'');
+    const aeo=a.aeo?`<div class="aeo-card-note"><div class="aeo-card-label">AEO</div>${a.aeo}</div>`:'';
+    c.innerHTML=`<div class="area-top"><div class="area-dot" style="background:${a.color}"></div><div class="area-name">${a.name}</div><div class="area-type">${a.type}</div></div><div class="area-summary">${a.summary}</div>${aeo}<div class="ai-tags">${a.tags.map(t=>`<span class="ai-tag ${tc[t]}">${tl[t]}</span>`).join('')}</div>`;
+    gr.appendChild(c);
   });
-
-  ceGrid.appendChild(grid);
+  eg.appendChild(gr);
 });
 </script>
 </body>
